@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../action/todoAction";
+import { ADD_TODO, COMPLETE_TODO, DELETE_TODO, GET_TODOS, UPDATE_TODO } from "../action/todoAction";
 
 // reducer is a function that takes initial state and an object
 // initial state : if we do not pass any action or anything by default it takes the initial value of the state variable
@@ -25,7 +25,7 @@ const initialState = {
 }
 
 
-function reducer (state = initialState,action){
+export default function reducer (state = initialState,action){
     switch(action.type){
         case ADD_TODO :
             return{
@@ -44,12 +44,12 @@ function reducer (state = initialState,action){
             state.todos[index] = action.payload
             return {...state}
 
-        case DELTE_TODO :
+        case DELETE_TODO :
             // The splice() method of Array instances changes the contents of an array by removing or replacing existing elements and/or adding new elements
             state.todos.splice(index,1)
             return {...state}
 
-        case GET_TODO :
+        case GET_TODOS :
             return {...state}
 
         default :
