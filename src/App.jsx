@@ -2,32 +2,37 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useSelector } from 'react-redux'
+
+/*
+  `useSelector` is a hook provided by the React-Redux library for "accessing the Redux store's state in a functional component". 
+  It allows you to select and retrieve specific pieces of state from the Redux store without the need for connecting your component using the `connect` higher-order component.
+*/ 
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const todos = useSelector(state => state.todos)
+  const completedTodos = useSelector(state => state.completedTodos)
+  
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>Pending</h1>
+        {todos.map((todo,index)=>(
+          <div key={index}>
+            <h3>{todo.title}</h3>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div>
+        <h1>Completed</h1>
+        {completedTodos.map((todo,index)=>(
+          <div key={index}>
+            <h3>{todo.title}</h3>
+          </div>
+        ))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
