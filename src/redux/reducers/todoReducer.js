@@ -28,10 +28,12 @@ const initialState = {
 export default function reducer (state = initialState,action){
     switch(action.type){
         case ADD_TODO :
+            //console.log(action.payload) // title
             return{
                 ...state,
                 // add a new todo to the existing todos
-                todos : [...state.todo,action.payload]
+                todos : [...state.todos,{title : action.payload,completed:false}]
+                
             }
 
         case COMPLETE_TODO :
@@ -52,7 +54,10 @@ export default function reducer (state = initialState,action){
                 [[Prototype]]: Object
             */ 
            console.log(state.todos[index]) // {id: 1, title: 'Learn ReactJS', completed: false}
-            return {...state , todos : [...state.todos,state.todos[index]]}
+            return {
+                ...state , 
+                todos : [...state.todos,state.todos[index]]
+            }
 
         case DELETE_TODO :
             // The splice() method of Array instances changes the contents of an array by removing or replacing existing elements and/or adding new elements

@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateTodoAction } from './redux/action/todoAction'
+import { addTodoAction, updateTodoAction } from './redux/action/todoAction'
 
 function App() {
   const [todo,setTodo] = useState('')
@@ -17,7 +17,7 @@ function App() {
     <>
       <div>
         <input value={todo} onChange={(e) => setTodo(e.target.value)}/>
-        <button onClick={() => {dispatch(updateTodoAction(todoId,todo));setTodo('');setTodoId(-1)}}>{todoId >= 0 ? "Update" : "Add"} todo </button>
+        <button onClick={() => {dispatch(todoId >=0 ? updateTodoAction(todoId,todo) : addTodoAction(todo));setTodo('');setTodoId(-1)}}>{todoId >= 0 ? "Update" : "Add"} todo </button>
         <h1>Pending</h1>
         {todos.map((todo,index)=>(
           <div key={index}>
