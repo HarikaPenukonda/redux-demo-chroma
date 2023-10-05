@@ -41,13 +41,18 @@ export default function reducer (state = initialState,action){
             }
 
         case UPDATE_TODO :
-            const newState = state
             const {index,newTodo} = action.payload
-            console.log(action.payload)
-            newState.todos[index].title = newTodo
-            console.log(newState)
-            state = newState
-            return {...state}
+            console.log(action.payload) // {index: 0, newTodo: 'Learn ReactJS'}
+            state.todos[index].title = newTodo
+            console.log(state) 
+            /*
+                {todos: Array(2), completedTodos: Array(1)}
+                completedTodos: [{…}]
+                todos: (2) [{…}, {…}]
+                [[Prototype]]: Object
+            */ 
+           console.log(state.todos[index]) // {id: 1, title: 'Learn ReactJS', completed: false}
+            return {...state , todos : [...state.todos,state.todos[index]]}
 
         case DELETE_TODO :
             // The splice() method of Array instances changes the contents of an array by removing or replacing existing elements and/or adding new elements
