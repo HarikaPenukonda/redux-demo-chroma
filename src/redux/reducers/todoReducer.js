@@ -41,9 +41,11 @@ export default function reducer (state = initialState,action){
             }
 
         case UPDATE_TODO :
-            console.log(action.payload) // {index: 0, newTodo: 'Learn ReactJs'}
-            state.todos[action.payload.index] = {...state.todos[action.payload.index],title : action.payload.title}
-            console.log(state)
+            const newState = state
+            const {index,title} = action.payload
+            newState.todos[id].title = title
+            console.log(newState)
+            state = newState
             return {...state}
 
         case DELETE_TODO :
