@@ -41,7 +41,7 @@ export default function reducer (state = initialState,action){
             }
 
         case UPDATE_TODO :
-            state.todos[index] = action.payload
+            state.todos[action.payload.index] = action.payload.newTodo
             return {...state}
 
         case DELETE_TODO :
