@@ -32,7 +32,7 @@ export default function reducer (state = initialState,action){
             return{
                 ...state,
                 // add a new todo to the existing todos
-                todos : [...state.todos,{title : action.payload,completed:false}]
+                todos : [...state.todos,{id : state.todos.length + 1, title : action.payload,completed:false}]
                 
             }
 
