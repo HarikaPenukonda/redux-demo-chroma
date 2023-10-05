@@ -43,7 +43,7 @@ export default function reducer (state = initialState,action){
         case UPDATE_TODO :
             const newState = state
             const {index,title} = action.payload
-            newState.todos[id].title = title
+            newState.todos[index].title = title
             console.log(newState)
             state = newState
             return {...state}
