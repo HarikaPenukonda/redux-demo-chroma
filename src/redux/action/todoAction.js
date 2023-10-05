@@ -39,7 +39,7 @@ export const updateTodoAction = (index,newTodo) => {
 export const deleteTodoAction = (index) => {
     return{
         type : DELETE_TODO,
-        payload : index
+        payload : {index}
     }
     
 }

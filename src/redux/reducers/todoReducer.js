@@ -32,7 +32,7 @@ export default function reducer (state = initialState,action){
             return{
                 ...state,
                 // add a new todo to the existing todos
-                todos : [...state.todos,{id : state.todos.length + 1, title : action.payload,completed:false}]
+                todos : [{id : state.todos.length + 1, title : action.payload,completed:false},...state.todos]
                 
             }
 
@@ -61,8 +61,12 @@ export default function reducer (state = initialState,action){
 
         case DELETE_TODO :
             // The splice() method of Array instances changes the contents of an array by removing or replacing existing elements and/or adding new elements
-            state.todos.splice(index,1)
-            return {...state}
+            state.todos.splice(action.payload.index,1)
+            //console.log(state)
+            return {
+                ...state,
+                todos : [...state.todos]
+            }
 
         case GET_TODOS :
             return {...state}

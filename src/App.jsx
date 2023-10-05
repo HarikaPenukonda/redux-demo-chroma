@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodoAction, updateTodoAction } from './redux/action/todoAction'
+import { addTodoAction, deleteTodoAction, updateTodoAction } from './redux/action/todoAction'
 
 function App() {
   const [todo,setTodo] = useState('')
@@ -23,7 +23,7 @@ function App() {
           <div key={index}>
             <h3>{todo.title}</h3>
             <button onClick={() => {setTodo(todo.title);setTodoId(index)}}>update todo</button>
-            <button>delete todo</button>
+            <button onClick={() => {dispatch(deleteTodoAction(index))}}>delete todo</button>
             <button>Mark as completed todo</button>
           </div>
         ))}
