@@ -17,7 +17,7 @@ function App() {
     <>
       <div>
         <input value={todo} onChange={(e) => setTodo(e.target.value)}/>
-        <button onClick={() => dispatch(updateTodoAction(todoId,todo))}>{todoId >= 0 ? "Update" : "Add"} todo </button>
+        <button onClick={() => {dispatch(updateTodoAction(todoId,todo));setTodo('');setTodoId(-1)}}>{todoId >= 0 ? "Update" : "Add"} todo </button>
         <h1>Pending</h1>
         {todos.map((todo,index)=>(
           <div key={index}>
